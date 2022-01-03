@@ -85,6 +85,10 @@
     </style>
 
     <script>
+        function isPlatform(str) {
+            return navigator.userAgent.toLowerCase().includes(str);
+        }
+
         function getLinksHtml(apple, google) {
             return '<div class="wrapper">'
                 + '<a href="' + apple + '">'
@@ -100,13 +104,13 @@
             var apple = 'itms-apps://apps.apple.com/app/id1594061269';
             var google = 'https://play.google.com/store/apps/details?id=ru.ivakhnenko.myqrcodes';
 
-            if(navigator.userAgent.toLowerCase().includes('iphone')){
+            if(isPlatform('iphone') || isPlatform('ipad')){
                 window.location.href = apple;
 
                 return;
             }
 
-            if(navigator.userAgent.toLowerCase().includes('android')){
+            if(isPlatform('android')){
                 window.location.href = google;
 
                 return;
